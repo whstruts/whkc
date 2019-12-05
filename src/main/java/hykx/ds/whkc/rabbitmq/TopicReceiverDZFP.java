@@ -1,6 +1,6 @@
 //package hykx.ds.whkc.rabbitmq;
 //
-//import hykx.ds.whkc.bean.Ddzt;
+//import hykx.ds.whkc.bean.DZFP;
 //import hykx.ds.whkc.tools.JSONChange;
 //import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 //import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -10,8 +10,8 @@
 //import java.io.IOException;
 //
 //@Component
-//@RabbitListener(queues = "topic.whds")
-//public class TopicReceiverDS {
+//@RabbitListener(queues = "topic.whdzfp")
+//public class TopicReceiverDZFP {
 //    @Autowired
 //    private KhzlService khzlService;
 //    @RabbitHandler
@@ -19,12 +19,12 @@
 //    {
 //        int i_pos;
 //        String s_json;
-//        Ddzt ddzt = new Ddzt();
+//        DZFP dzfp = new DZFP();
 //        i_pos = message.indexOf("{");
 //        s_json = message.substring(i_pos);
-//        ddzt = (Ddzt) JSONChange.jsonToObj(ddzt,s_json);
-//        khzlService.ItoDDs(ddzt);
-//        System.out.println("接收者 TopicReceiverDS,"+s_json);
+//        dzfp = (DZFP) JSONChange.jsonToObj(dzfp,s_json);
+//        khzlService.ItoDZFPs(dzfp);
+//        System.out.println("接收者 TopicReceiverDZFP,"+s_json);
 //
 //    }
 //}

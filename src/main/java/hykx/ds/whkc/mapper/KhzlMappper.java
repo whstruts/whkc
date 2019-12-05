@@ -8,27 +8,46 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface KhzlMappper {
-	@Insert("replace INTO zt_kh(code,dwbh,name,jyfw,zzzch,zzyxqz,xkzh,xkzyxqz,gspzh,gspzyxqz,dwjb,qyfr,shr1,email,telephone,fzrlxdh)" +
-            " VALUES(#{code},#{dwbh},#{name},#{jyfw},#{zzzch},#{zzyxqz},#{xkzh},#{xkzyxqz},#{gspzh},#{gspzyxqz},#{dwjb},#{qyfr},#{shr1},#{email},#{telephone},#{fzrlxdh}) ")
-	void insert(Khzl khzl);
 
-    @Insert("replace INTO zt_ywkc(code,amount,is_exist,batchnumber,validdate,productdate) VALUES(#{code},#{amount},1,#{batchnumber},#{validdate},#{productdate})")
-    void insertKC(SpKC spkc);
+    @Insert("replace INTO hykx_rd.BBSPJG(drugCode,price,chainprice) VALUES(#{drugCode},#{price},#{chainprice})")
+    void insertBBSPJG(BBSPJG bbspjg);
 
-    @Insert("replace INTO zt_ddzt(kpbh,kprq,ds) VALUES(#{kpbh},#{kprq},#{ds})")
-    void insertDD(Ddzt ddzt);
+    @Insert("replace INTO hykx_rd.BBSPKC(drugCode,stock) VALUES(#{drugCode},#{stock})")
+    void insertBBSPKC(BBSPKC bbspkc);
 
-    @Insert("replace INTO zt_spzl(code,spmc,spgg,spcd,pzwh) VALUES(#{code},#{spmc},#{spgg},#{spcd},#{pzwh})")
-    void insertSP(Spzl spzl);
+    @Insert("replace INTO hykx_rd.BBSPPH(drugCode,batchNum,proDate,validity) VALUES(#{drugCode},#{batchNum},#{proDate},#{validity})")
+    void insertBBSPPH(BBSPPH bbspph);
+
+    @Insert("replace INTO hykx_rd.BBSPZL(drugCode,drugName,pack,factory,unit,barcode,approval,busiType,stock,price,inCode,step,taxRate,wholePack,recommendedPrice) "+
+              " VALUES(#{drugCode},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{stock},#{price},#{inCode},#{step},#{taxRate},#{wholePack},#{recommendedPrice})")
+    void insertBBSPZL(BBSPZL bbspzl);
+
+//	@Insert("replace INTO huayuanra.zt_kh(code,dwbh,name,jyfw,zzzch,zzyxqz,xkzh,xkzyxqz,gspzh,gspzyxqz,dwjb,qyfr,shr1,email,telephone,fzrlxdh)" +
+//            " VALUES(#{code},#{dwbh},#{name},#{jyfw},#{zzzch},#{zzyxqz},#{xkzh},#{xkzyxqz},#{gspzh},#{gspzyxqz},#{dwjb},#{qyfr},#{shr1},#{email},#{telephone},#{fzrlxdh}) ")
+//	void insert(Khzl khzl);
+//
+//    @Insert("replace INTO huayuanra.zt_ywkc(code,amount,is_exist,batchnumber,validdate,productdate) VALUES(#{code},#{amount},1,#{batchnumber},#{validdate},#{productdate})")
+//    void insertKC(SpKC spkc);
+//
+//    @Insert("replace INTO huayuanra.zt_ddzt(kpbh,kprq,ds) VALUES(#{kpbh},#{kprq},#{ds})")
+//    void insertDD(Ddzt ddzt);
+//
+//    @Insert("replace INTO hykx_rd.zt_dzfp(orderId,invoiceCode,invoiceNo,securityCode,invoiceUrl,dates,xsddbh) " +
+//            " VALUES(#{orderId},#{invoiceCode},#{invoiceNo},#{securityCode},#{invoiceUrl},#{dates},#{xsddbh})")
+//    void insertDZFP(DZFP dzfp);
+//
+//    @Insert("replace INTO huayuanra.zt_spzl(code,spmc,spgg,spcd,pzwh) VALUES(#{code},#{spmc},#{spgg},#{spcd},#{pzwh})")
+//    void insertSP(Spzl spzl);
 
     @Select("select oi.order_sn kpbh,DATE_FORMAT(oi.hy_time,'%Y-%m-%d') kprq, " +
             "oi.hyds_userid khcode, kh.name khmc,kh.address shdz,'4' soft, " +
             "oi.hyds_ddid dsfddh,oi.ahhy_ddid hyzbddh " +
-            "from yzy_order_info oi,zt_kh kh " +
+            "from huayuanra.yzy_order_info oi,huayuanra.zt_kh kh " +
             "where oi.is_to_erp = 0 and oi.pay_status = 2 and oi.is_upload = 1 " +
             "and oi.order_status > 0 " +
             "and oi.ahhy_ddid is not null " +
             "and oi.hyds_ddid is not NULL " +
+            "and oi.hy_time is not NULL " +
             "and oi.hyds_userid is not null  and oi.hyds_userid !='' " +
             "and oi.hyds_userid = kh.code ")
     public List<ERPddhz> getddhz();
@@ -68,7 +87,7 @@ public interface KhzlMappper {
             "else 2 end  fhdd, " +
             "DATE_FORMAT(NOW(),'%Y-%m-%d') kprq, " +
             "DATE_FORMAT(NOW(),'%Y-%m-%d') factkprq " +
-            "from yzy_order_info oi,yzy_order_goods og,yzy_goods g  " +
+            "from huayuanra.yzy_order_info oi,huayuanra.yzy_order_goods og,huayuanra.yzy_goods g  " +
             "where oi.is_to_erp = 0 and oi.pay_status = 2 and oi.is_upload = 1 " +
             "and oi.order_status > 0 " +
             "and oi.ahhy_ddid is not null " +
@@ -81,11 +100,14 @@ public interface KhzlMappper {
             "and oi.order_sn = #{kpbh}")
     public List<ERPddmx> getddmxbyid(String kpbh);
 
-    @Update("update yzy_order_info set is_to_erp = 1 where is_to_erp = 0 and order_sn = #{kpbh}")
+    @Update("update huayuanra.yzy_order_info set is_to_erp = 1 where is_to_erp = 0 and order_sn = #{kpbh}")
     public void updatedd(String kpbh);
 
-    @Update("update yzy_order_info oi,yzy_order_goods og set og.is_to_erp = 1 where  oi.order_id = og.order_id and og.is_to_erp = 0 and oi.order_sn = #{kpbh} and og.goods_id = #{goods_id}")
+    @Update("update huayuanra.yzy_order_info oi,huayuanra.yzy_order_goods og set og.is_to_erp = 1 where  oi.order_id = og.order_id and og.is_to_erp = 0 and oi.order_sn = #{kpbh} and og.goods_id = #{goods_id}")
     public void updateddmx(ERPddmx mx);
+
+    @Select("call huayuanra.HY_INF_KC_YYY_YSB()")
+    public void DoYSBWriteBack();
 }
 
 
