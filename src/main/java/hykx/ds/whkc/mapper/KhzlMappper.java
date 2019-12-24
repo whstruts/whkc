@@ -15,7 +15,7 @@ public interface KhzlMappper {
     @Insert("replace INTO hykx_rd.BBSPKC(drugCode,stock) VALUES(#{drugCode},#{stock})")
     void insertBBSPKC(BBSPKC bbspkc);
 
-    @Insert("replace INTO hykx_rd.BBSPPH(drugCode,batchNum,proDate,validity) VALUES(#{drugCode},#{batchNum},#{proDate},#{validity})")
+    @Insert("replace INTO hykx_rd.BBSPPH(drugCode,batchNum,prodDate,validity) VALUES(#{drugCode},#{batchNum},#{prodDate},#{validity})")
     void insertBBSPPH(BBSPPH bbspph);
 
     @Insert("replace INTO hykx_rd.BBSPZL(drugCode,drugName,pack,factory,unit,barcode,approval,busiType,stock,price,inCode,step,taxRate,wholePack,recommendedPrice) "+
