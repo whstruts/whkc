@@ -12,6 +12,8 @@ public class KhzlService {
 
 	@Autowired
 	private KhzlMappper khzlMapper;
+
+	public List<YZYGOODS> getYZYGOODS() { return khzlMapper.getyzygoods();}
 //	public void ItoKhs(Khzl khzl){
 //		khzlMapper.insert(khzl);
 //	}
@@ -28,36 +30,36 @@ public class KhzlService {
 //		khzlMapper.insertSP(spzl);
 //	}
 
-	public void BBSPKC(BBSPKC bbspkc){
-		khzlMapper.insertBBSPKC(bbspkc);
-	}
-
-	public void BBSPJG(BBSPJG bbspjg){
-		khzlMapper.insertBBSPJG(bbspjg);
-	}
-
-	public void BBSPPH(BBSPPH bbspph){
-		khzlMapper.insertBBSPPH(bbspph);
-	}
-
-	public void BBSPZL(BBSPZL bbspzl){
-		khzlMapper.insertBBSPZL(bbspzl);
-	}
-
-	public List<ERPddhz> getDDHZ() { return khzlMapper.getddhz();}
-//	public List<ERPddmx> getDDMX() { return khzlMapper.getddmx();}
-
-	public List<ERPddmx> getDDMXbyID(String kpbh) { return khzlMapper.getddmxbyid(kpbh);}
-
-	public void UpdateDD(String kpbh){
-		khzlMapper.updatedd(kpbh);
-	}
-
-	public void UpdateDDMX(ERPddmx mx){
-		khzlMapper.updateddmx(mx);
-	}
-
-	public void DoYSBWriteBack(){
-		khzlMapper.DoYSBWriteBack();
-	}
+//	public void BBSPKC(BBSPKC bbspkc){
+//		khzlMapper.insertBBSPKC(bbspkc);
+//	}
+//
+//	public void BBSPJG(BBSPJG bbspjg){
+//		khzlMapper.insertBBSPJG(bbspjg);
+//	}
+//
+//	public void BBSPPH(BBSPPH bbspph){
+//		khzlMapper.insertBBSPPH(bbspph);
+//	}
+//
+//	public void BBSPZL(BBSPZL bbspzl){
+//		khzlMapper.insertBBSPZL(bbspzl);
+//	}
+//
+//	public List<ERPddhz> getDDHZ() { return khzlMapper.getddhz();}
+////	public List<ERPddmx> getDDMX() { return khzlMapper.getddmx();}
+//
+//	public List<ERPddmx> getDDMXbyID(String kpbh) { return khzlMapper.getddmxbyid(kpbh);}
+//
+//	public void UpdateDD(String kpbh){
+//		khzlMapper.updatedd(kpbh);
+//	}
+//
+//	public void UpdateDDMX(ERPddmx mx){
+//		khzlMapper.updateddmx(mx);
+//	}
+//
+//	public void DoYSBWriteBack(){
+//		khzlMapper.DoYSBWriteBack();
+//	}
 }
