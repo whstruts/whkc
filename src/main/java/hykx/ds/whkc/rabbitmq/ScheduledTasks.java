@@ -68,17 +68,31 @@ public class ScheduledTasks {
     @Scheduled(fixedDelay = 1800*1000)
     public void reportCurrentTimeYZYGOODS()throws Exception {
 
+        System.out.println("DELETEYZYGOODS!");
+
+        String context = "DELETEYZYGOODS";
+
+        String routeKey = "topic.yzygoods";
+
+        String exchange = "topicExchange";
+
+        context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
+
+        System.out.println("DELETEYZYGOODS : " + context);
+
+        this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
+
         List<YZYGOODS> listsYZYGOODS = khzlService.getYZYGOODS();
         for (int i = 0; i < listsYZYGOODS.size(); i++) {
             YZYGOODS yzygoods = listsYZYGOODS.get(i);
 
-            System.out.println("GetBBSPZL,Name:" + JSONChange.objToJson(yzygoods));
+            System.out.println("GetYZYGOODS,Name:" + JSONChange.objToJson(yzygoods));
 
-            String context = JSONChange.objToJson(yzygoods);
+            context = JSONChange.objToJson(yzygoods);
 
-            String routeKey = "topic.yzygoods";
+            routeKey = "topic.yzygoods";
 
-            String exchange = "topicExchange";
+            exchange = "topicExchange";
 
             context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
 
