@@ -52,6 +52,19 @@ public interface KhzlMappper {
             "and oi.hyds_userid = kh.code ")
     public List<ERPddhz> getddhz();
 
+    @Select("select oi.order_sn kpbh,DATE_FORMAT(oi.hy_time,'%Y-%m-%d') kprq, " +
+            "oi.hyds_userid khcode, kh.name khmc,kh.address shdz,'4' soft, " +
+            "oi.hyds_ddid dsfddh,oi.ahhy_ddid hyzbddh " +
+            "from huayuanra.yzy_order_info oi,huayuanra.zt_kh kh " +
+            "where oi.is_to_erp = 0 and oi.pay_status = 2 and oi.is_upload = 1 " +
+            "and oi.order_status > 0 " +
+            "and oi.ahhy_ddid is not null " +
+            "and oi.hyds_ddid is not NULL " +
+            "and oi.hy_time is not NULL " +
+            "and oi.hyds_userid is not null  and oi.hyds_userid !='' " +
+            "and oi.hyds_userid = kh.code ")
+    public List<ysbddhz> getysbddhz();
+
 //
 //    @Select("select oi.order_sn kpbh,og.goods_id,og.rec_id ywxh,'' code,og.goods_name spmc, " +
 //            "g.gg spgg,g.cdmc spcd,g.jx jx,g.dw unit,g.bz spbz,g.PZWH pzwh,og.goods_number amount, " +

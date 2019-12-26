@@ -14,6 +14,8 @@ public class RabbitTopicConfig {
     final static String ERPDDHZ = "topic.erpddhz";
     final static String ERPDDMX = "topic.erpddmx";
     final static String ERPDD = "topic.erpdd";
+
+    final static String YZYGOODS = "topic.yzygoods"; //20191226 whstruts 兵兵 MSSQL 商品库存
     @Bean
     public Queue queueErpDDHZ() {
         return new Queue(RabbitTopicConfig.ERPDDHZ);
@@ -28,6 +30,11 @@ public class RabbitTopicConfig {
     @Bean
     public Queue queueErpDD() {
         return new Queue(RabbitTopicConfig.ERPDD);
+    }
+
+    @Bean
+    public Queue queueYZYGOODS() {
+        return new Queue(RabbitTopicConfig.YZYGOODS);
     }
 
 
@@ -53,6 +60,11 @@ public class RabbitTopicConfig {
     @Bean
     Binding bindingExchangeDD(Queue queueErpDD, TopicExchange topicExchange) {
         return BindingBuilder.bind(queueErpDD).to(topicExchange).with("topic.erpdd");
+    }
+
+    @Bean
+    Binding bindingExchangeYZYGOODS(Queue queueYZYGOODS, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queueYZYGOODS).to(topicExchange).with("topic.yzygoods");
     }
 
 }
