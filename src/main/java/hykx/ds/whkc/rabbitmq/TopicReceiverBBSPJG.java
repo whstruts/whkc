@@ -18,14 +18,14 @@ public class TopicReceiverBBSPJG {
     @RabbitHandler
     public void process(String message) throws IOException
     {
-        int i_pos;
-        String s_json;
-        BBSPJG bbspjg = new BBSPJG();
-        i_pos = message.indexOf("{");
-        s_json = message.substring(i_pos);
-        bbspjg = (BBSPJG) JSONChange.jsonToObj(bbspjg,s_json);
-        khzlService.BBSPJG(bbspjg);
-        System.out.println("接收者 BBSPJG,"+s_json);
+//        int i_pos;
+//        String s_json;
+//        BBSPJG bbspjg = new BBSPJG();
+//        i_pos = message.indexOf("{");
+//        s_json = message.substring(i_pos);
+//        bbspjg = (BBSPJG) JSONChange.jsonToObj(bbspjg,s_json);
+//        khzlService.BBSPJG(bbspjg);
+//        System.out.println("接收者 BBSPJG,"+s_json);
     }
 }
 

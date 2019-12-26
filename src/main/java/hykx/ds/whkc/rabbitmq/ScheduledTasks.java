@@ -65,7 +65,7 @@ public class ScheduledTasks {
 //        System.out.println("DoYSBWriteBack!");
 //    }
 
-    @Scheduled(fixedDelay = 600*1000)
+    @Scheduled(fixedDelay = 1800*1000)
     public void reportCurrentTimeYZYGOODS()throws Exception {
 
         List<YZYGOODS> listsYZYGOODS = khzlService.getYZYGOODS();

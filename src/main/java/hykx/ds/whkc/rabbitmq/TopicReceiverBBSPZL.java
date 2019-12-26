@@ -18,14 +18,14 @@ public class TopicReceiverBBSPZL {
     @RabbitHandler
     public void process(String message) throws IOException
     {
-        int i_pos;
-        String s_json;
-        BBSPZL bbspzl = new BBSPZL();
-        i_pos = message.indexOf("{");
-        s_json = message.substring(i_pos);
-        bbspzl = (BBSPZL) JSONChange.jsonToObj(bbspzl,s_json);
-        khzlService.BBSPZL(bbspzl);
-        System.out.println("接收者 BBSPZL,"+s_json);
+//        int i_pos;
+//        String s_json;
+//        BBSPZL bbspzl = new BBSPZL();
+//        i_pos = message.indexOf("{");
+//        s_json = message.substring(i_pos);
+//        bbspzl = (BBSPZL) JSONChange.jsonToObj(bbspzl,s_json);
+//        khzlService.BBSPZL(bbspzl);
+//        System.out.println("接收者 BBSPZL,"+s_json);
     }
 }
 

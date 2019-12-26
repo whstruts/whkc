@@ -17,14 +17,14 @@ public class TopicReceiverBBSPKC {
     @RabbitHandler
     public void process(String message) throws IOException
     {
-        int i_pos;
-        String s_json;
-        BBSPKC bbspkc = new BBSPKC();
-        i_pos = message.indexOf("{");
-        s_json = message.substring(i_pos);
-        bbspkc = (BBSPKC) JSONChange.jsonToObj(bbspkc,s_json);
-        khzlService.BBSPKC(bbspkc);
-        System.out.println("接收者 BBSPKC,"+s_json);
+//        int i_pos;
+//        String s_json;
+//        BBSPKC bbspkc = new BBSPKC();
+//        i_pos = message.indexOf("{");
+//        s_json = message.substring(i_pos);
+//        bbspkc = (BBSPKC) JSONChange.jsonToObj(bbspkc,s_json);
+//        khzlService.BBSPKC(bbspkc);
+//        System.out.println("接收者 BBSPKC,"+s_json);
     }
 }
 
