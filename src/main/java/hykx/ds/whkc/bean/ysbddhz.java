@@ -92,4 +92,14 @@ public class ysbddhz {
     private String xgdjbh;
     private String beizhu;
     private String is_zx;
+
+    public String getIs_run() {
+        return is_run;
+    }
+
+    public void setIs_run(String is_run) {
+        this.is_run = is_run;
+    }
+
+    private String is_run;
 }

@@ -68,9 +68,9 @@ public class ScheduledTasks {
     @Scheduled(fixedDelay = 1800*1000)
     public void reportCurrentTimeYZYGOODS()throws Exception {
 
-        System.out.println("DELETEYZYGOODS!");
+        System.out.println("UPDATEYZYGOODS!");
 
-        String context = "DELETEYZYGOODS";
+        String context = "UPDATEYZYGOODS";
 
         String routeKey = "topic.yzygoods";
 
@@ -78,7 +78,7 @@ public class ScheduledTasks {
 
         context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
 
-        System.out.println("DELETEYZYGOODS : " + context);
+        System.out.println("UPDATEYZYGOODS : " + context);
 
         this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
 
@@ -97,6 +97,22 @@ public class ScheduledTasks {
             context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
 
             System.out.println("sendYZYGOODS : " + context);
+
+            this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
+        }
+        if(listsYZYGOODS.size()>20000) //新上架的商品超过一定数据才删除老的商品
+        {
+            System.out.println("DELETEYZYGOODS!");
+
+            context = "DELETEYZYGOODS";
+
+            routeKey = "topic.yzygoods";
+
+            exchange = "topicExchange";
+
+            context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
+
+            System.out.println("DELETEYZYGOODS : " + context);
 
             this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
         }

@@ -1,6 +1,7 @@
 package hykx.ds.whkc.mapper;
 
 import hykx.ds.whkc.bean.*;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
@@ -14,6 +15,14 @@ public interface KhzlMappper {
             "and goods_sn like 'YSBBB%' and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0 " +
             "or (goods_sn like 'YSBYMD%'and is_on_sale = 1 and bz > 0) ")
     public List<YZYGOODS> getyzygoods();
+
+    @Insert("replace INTO hykx_rd.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
+            " VALUES(#{djbh},#{rq},#{ontime},#{customerId},#{status},#{djje},#{xgdjbh},#{beizhu},#{is_zx})")
+    void insertysbDDHZ(ysbddhz ddhz);
+
+    @Insert("replace INTO hykx_rd.ysb_ddmx(djbh,dj_sn,drugCode,shl,dj,je,batchNum,validity,status,is_zx ) "+
+            " VALUES(#{djbh},#{dj_sn},#{drugcode},#{shl},#{dj},#{je},#{batchnum},#{validity},#{status},#{is_zx})")
+    void insertysbDDMX(ysbddmx ddmx);
 
 //    @Insert("replace INTO hykx_rd.BBSPJG(drugCode,price,chainprice) VALUES(#{drugCode},#{price},#{chainprice})")
 //    void insertBBSPJG(BBSPJG bbspjg);

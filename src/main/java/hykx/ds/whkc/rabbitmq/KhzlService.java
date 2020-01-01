@@ -62,4 +62,10 @@ public class KhzlService {
 //	public void DoYSBWriteBack(){
 //		khzlMapper.DoYSBWriteBack();
 //	}
+    public void ItoYSBDDHZs(ysbddhz ddhz){
+	khzlMapper.insertysbDDHZ(ddhz);
+}
+	public void ItoYSBDDMXs(ysbddmx ddmx){
+		khzlMapper.insertysbDDMX(ddmx);
+	}
 }
