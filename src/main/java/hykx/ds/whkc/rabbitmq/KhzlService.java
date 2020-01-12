@@ -21,6 +21,9 @@ public class KhzlService {
 	public void ItoDDs(Ddzt ddzt){
 		khzlMapper.insertDD(ddzt);
 	}
+	public void ItoDZFPs(DZFP dzfp){
+		khzlMapper.insertDZFP(dzfp);
+	}
 	public void ItoSPs(Spzl spzl){
 		khzlMapper.insertSP(spzl);
 	}
@@ -35,5 +38,9 @@ public class KhzlService {
 
 	public void UpdateDDMX(ERPddmx mx){
 		khzlMapper.updateddmx(mx);
+	}
+
+	public void DoYSBWriteBack(){
+		khzlMapper.DoYSBWriteBack();
 	}
 }

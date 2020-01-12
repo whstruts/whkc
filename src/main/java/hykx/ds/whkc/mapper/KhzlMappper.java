@@ -18,6 +18,10 @@ public interface KhzlMappper {
     @Insert("replace INTO zt_ddzt(kpbh,kprq,ds) VALUES(#{kpbh},#{kprq},#{ds})")
     void insertDD(Ddzt ddzt);
 
+    @Insert("replace INTO hykx.zt_dzfp(orderId,invoiceCode,invoiceNo,securityCode,invoiceUrl,dates,xsddbh) " +
+            " VALUES(#{orderId},#{invoiceCode},#{invoiceNo},#{securityCode},#{invoiceUrl},#{dates},#{xsddbh})")
+    void insertDZFP(DZFP dzfp);
+
     @Insert("replace INTO zt_spzl(code,spmc,spgg,spcd,pzwh) VALUES(#{code},#{spmc},#{spgg},#{spcd},#{pzwh})")
     void insertSP(Spzl spzl);
 
@@ -29,6 +33,7 @@ public interface KhzlMappper {
             "and oi.order_status > 0 " +
             "and oi.ahhy_ddid is not null " +
             "and oi.hyds_ddid is not NULL " +
+            "and oi.hy_time is not NULL " +
             "and oi.hyds_userid is not null  and oi.hyds_userid !='' " +
             "and oi.hyds_userid = kh.code ")
     public List<ERPddhz> getddhz();
@@ -73,7 +78,7 @@ public interface KhzlMappper {
             "and oi.order_status > 0 " +
             "and oi.ahhy_ddid is not null " +
             "and oi.hyds_ddid is not NULL " +
-            "and og.goods_sn like 'HYYP%' " +
+            "and og.goods_sn like 'KX%' " +
             "and og.is_to_erp = 0 " +
             "and oi.hyds_userid is not null  and oi.hyds_userid !='' " +
             "and oi.order_id = og.order_id  " +
@@ -86,6 +91,9 @@ public interface KhzlMappper {
 
     @Update("update yzy_order_info oi,yzy_order_goods og set og.is_to_erp = 1 where  oi.order_id = og.order_id and og.is_to_erp = 0 and oi.order_sn = #{kpbh} and og.goods_id = #{goods_id}")
     public void updateddmx(ERPddmx mx);
+
+    @Select("call HY_INF_KC_YYY_YSB()")
+    public void DoYSBWriteBack();
 }
 
 

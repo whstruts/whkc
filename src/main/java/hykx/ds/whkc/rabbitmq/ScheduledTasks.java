@@ -17,55 +17,7 @@ public class ScheduledTasks {
     @Autowired
     private KhzlService khzlService;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-//    @Scheduled(fixedDelay = 60*1000)
-//    public void reportCurrentTime()throws Exception {
-//
-//        List<ERPddhz> listsDDHZ = khzlService.getDDHZ();
-//        for (int i = 0; i < listsDDHZ.size(); i++) {
-//            ERPddhz ddhz = listsDDHZ.get(i);
-//
-//            System.out.println("GetDDHZ,Name:" + JSONChange.objToJson(ddhz));
-//
-//            String context = JSONChange.objToJson(ddhz);
-//
-//            String routeKey = "topic.erpddhz";
-//
-//            String exchange = "topicExchange";
-//
-//            context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
-//
-//            System.out.println("sendDDHZTest : " + context);
-//
-//            khzlService.UpdateDD(ddhz.getKpbh());
-//
-//            this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
-//        }
-//
-//        List<ERPddmx> listsDDMX = khzlService.getDDMX();
-//        for (int i = 0; i < listsDDMX.size(); i++) {
-//            ERPddmx ddmx = listsDDMX.get(i);
-//
-//            System.out.println("GetDDMX,Name:" + JSONChange.objToJson(ddmx));
-//
-//            String context = JSONChange.objToJson(ddmx);
-//
-//            String routeKey = "topic.erpddmx";
-//
-//            String exchange = "topicExchange";
-//
-//            context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
-//
-//            System.out.println("sendDDMXTest : " + context);
-//
-//            this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
-//
-//            khzlService.UpdateDDMX(ddmx);
-//        }
-//
-//
-//    }
-
-        @Scheduled(fixedDelay = 60*1000)
+    @Scheduled(fixedDelay = 60*1000)
     public void reportCurrentTime()throws Exception {
 
         List<ERPddhz> listsDDHZ = khzlService.getDDHZ();
@@ -78,32 +30,40 @@ public class ScheduledTasks {
             {
                 dd.setErpddhz(ddhz);
                 dd.setErpddmxs(listDDMX);
+
+                khzlService.UpdateDD(ddhz.getKpbh());//更新订单汇总状态
+                for(int j = 0;j<listDDMX.size();j++)
+                {
+                    khzlService.UpdateDDMX(listDDMX.get(j));  //更新订单明细状态
+                }
+
+                JSONObject data = JSONObject.fromObject(dd);
+
+                System.out.println("GetDD,Name:" + data.toString());
+
+
+                String context = data.toString();
+
+                String routeKey = "topic.erpdd";
+
+                String exchange = "topicExchange";
+
+                context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
+
+                System.out.println("sendDDTest : " + context);
+
+                this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
             }
             else
-                return;
-            khzlService.UpdateDD(ddhz.getKpbh());//更新订单汇总状态
-            for(int j = 0;j<listDDMX.size();j++)
-            {
-                khzlService.UpdateDDMX(listDDMX.get(j));  //更新订单明细状态
-            }
-
-            JSONObject data = JSONObject.fromObject(dd);
-
-            System.out.println("GetDD,Name:" + data.toString());
-
-
-            String context = data.toString();
-
-            String routeKey = "topic.erpdd";
-
-            String exchange = "topicExchange";
-
-            context = "context:" + exchange + ",routeKey:" + routeKey + ",context:" + context;
-
-            System.out.println("sendDDTest : " + context);
-
-            this.rabbitTemplate.convertAndSend(exchange, routeKey, context);
+                continue; //20191213 whstruts 明细没有数据，继续处理下一订单
         }
     }
+
+    @Scheduled(fixedDelay = 600*1000)//20190829 whstruts 定时回写药师帮订单数据
+    public void reportCurrentTime1()throws Exception{
+        khzlService.DoYSBWriteBack();
+        System.out.println("DoYSBWriteBack!");
+    }
+
 
 }
