@@ -8,11 +8,11 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface KhzlMappper {
-	@Insert("replace INTO zt_kh(code,dwbh,name,jyfw,zzzch,zzyxqz,xkzh,xkzyxqz,gspzh,gspzyxqz,dwjb,qyfr,shr1,email,telephone,fzrlxdh)" +
-            " VALUES(#{code},#{dwbh},#{name},#{jyfw},#{zzzch},#{zzyxqz},#{xkzh},#{xkzyxqz},#{gspzh},#{gspzyxqz},#{dwjb},#{qyfr},#{shr1},#{email},#{telephone},#{fzrlxdh}) ")
+	@Insert("replace INTO zt_kh(code,dwbh,name,jyfw,zzzch,zzyxqz,xkzh,xkzyxqz,gspzh,gspzyxqz,dwjb,qyfr,shr1,email,telephone,fzrlxdh,linkman,address,taxnumber)" +
+            " VALUES(#{code},#{dwbh},#{name},#{jyfw},#{zzzch},#{zzyxqz},#{xkzh},#{xkzyxqz},#{gspzh},#{gspzyxqz},#{dwjb},#{qyfr},#{shr1},#{email},#{telephone},#{fzrlxdh},#{linkman},#{address},#{taxnumber}) ")
 	void insert(Khzl khzl);
 
-    @Insert("replace INTO zt_ywkc(code,amount,is_exist,batchnumber,validdate,productdate) VALUES(#{code},#{amount},1,#{batchnumber},#{validdate},#{productdate})")
+    @Insert("replace INTO zt_ywkc(price,cwtz,code,amount,is_exist,batchnumber,validdate,productdate) VALUES(#{code},#{amount},1,#{batchnumber},#{validdate},#{productdate},#{price},#{cwtz})")
     void insertKC(SpKC spkc);
 
     @Insert("replace INTO zt_ddzt(kpbh,kprq,ds) VALUES(#{kpbh},#{kprq},#{ds})")
