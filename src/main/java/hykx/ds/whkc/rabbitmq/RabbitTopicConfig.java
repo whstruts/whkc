@@ -35,4 +35,6 @@ public class RabbitTopicConfig {
         return BindingBuilder.bind(queueYZYGOODS).to(topicExchange).with("topic.yzygoods");
     }
 
+
+
 }
