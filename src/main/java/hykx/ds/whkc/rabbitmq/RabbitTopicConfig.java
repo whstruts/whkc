@@ -11,26 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitTopicConfig {
 
-    final static String ERPDDHZ = "topic.erpddhz";
-    final static String ERPDDMX = "topic.erpddmx";
-    final static String ERPDD = "topic.erpdd";
 
     final static String YZYGOODS = "topic.yzygoods"; //20191226 whstruts 兵兵 MSSQL 商品库存
-    @Bean
-    public Queue queueErpDDHZ() {
-        return new Queue(RabbitTopicConfig.ERPDDHZ);
-    }
-
-    @Bean
-    public Queue queueErpDDMX() {
-        return new Queue(RabbitTopicConfig.ERPDDMX);
-    }
-
-
-    @Bean
-    public Queue queueErpDD() {
-        return new Queue(RabbitTopicConfig.ERPDD);
-    }
 
     @Bean
     public Queue queueYZYGOODS() {
@@ -47,20 +29,6 @@ public class RabbitTopicConfig {
     }
     //綁定队列 queueYmq() 到 topicExchange 交换机,路由键只要是以 topic 开头的队列接受者可以收到消息
 
-    @Bean
-    Binding bindingExchangeDDHZ(Queue queueErpDDHZ, TopicExchange topicExchange) {
-        return BindingBuilder.bind(queueErpDDHZ).to(topicExchange).with("topic.erpddhz");
-    }
-
-    @Bean
-    Binding bindingExchangeDDMX(Queue queueErpDDMX, TopicExchange topicExchange) {
-        return BindingBuilder.bind(queueErpDDMX).to(topicExchange).with("topic.erpddmx");
-    }
-
-    @Bean
-    Binding bindingExchangeDD(Queue queueErpDD, TopicExchange topicExchange) {
-        return BindingBuilder.bind(queueErpDD).to(topicExchange).with("topic.erpdd");
-    }
 
     @Bean
     Binding bindingExchangeYZYGOODS(Queue queueYZYGOODS, TopicExchange topicExchange) {
