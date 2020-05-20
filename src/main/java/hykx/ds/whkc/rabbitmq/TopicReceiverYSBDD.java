@@ -18,23 +18,23 @@ import java.io.IOException;
 public class TopicReceiverYSBDD {
     @Autowired
     private KhzlService khzlService;
-//    @RabbitHandler
-//    public void process(String message) throws IOException
-//    {
-//        int i_pos;
-//        String s_json;
-//        i_pos = message.indexOf("{");
-//        s_json = message.substring(i_pos);
-//        JSONObject jsonObject = JSONObject.fromObject(s_json);
-//        ysbdd dd = (ysbdd) JSONObject.toBean(jsonObject,ysbdd.class);
-//        khzlService.ItoYSBDDHZs(dd.getYsbddhz());
-//        String aa = jsonObject.get("ysbddmxes").toString();
-//        JSONArray array = JSONArray.fromObject(aa);
-//        for(int i=0;i<array.size();i++)
-//        {
-//              ysbddmx mx = (ysbddmx) JSONObject.toBean(JSONObject.fromObject(array.get(i)),ysbddmx.class);
-//              khzlService.ItoYSBDDMXs(mx);
-//        }
-//        System.out.println("接收者 TopicReceiverYSBDD,"+s_json);
-//    }
+    @RabbitHandler
+    public void process(String message) throws IOException
+    {
+        int i_pos;
+        String s_json;
+        i_pos = message.indexOf("{");
+        s_json = message.substring(i_pos);
+        JSONObject jsonObject = JSONObject.fromObject(s_json);
+        ysbdd dd = (ysbdd) JSONObject.toBean(jsonObject,ysbdd.class);
+        khzlService.ItoYSBDDHZs(dd.getYsbddhz());
+        String aa = jsonObject.get("ysbddmxes").toString();
+        JSONArray array = JSONArray.fromObject(aa);
+        for(int i=0;i<array.size();i++)
+        {
+              ysbddmx mx = (ysbddmx) JSONObject.toBean(JSONObject.fromObject(array.get(i)),ysbddmx.class);
+              khzlService.ItoYSBDDMXs(mx);
+        }
+        System.out.println("接收者 TopicReceiverYSBDD,"+s_json);
+    }
 }
