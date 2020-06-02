@@ -6,14 +6,14 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface KhzlMappper {
-    @Select("select  goods_sn,goods_name,goods_number,market_price,shop_price,is_on_sale, " +
+    @Select("select  goods_sn,substring_index(substring_index(goods_name,'(',1),'（',1)  as goods_name,goods_number,market_price,shop_price,is_on_sale, " +
             "            YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ, " +
             "            YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s " +
             "            from hykx_rd.yzy_goods  " +
             "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1 " +
             "and ((ISRETAIL = 0 and goods_number+1 > bz*2) or (ISRETAIL = 1 and goods_number+1 > bz/2) ) " +
             "and goods_sn like 'YSBBB%' and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0 " +
-            "or (goods_sn like 'YSBYMD%'and is_on_sale = 1 and bz > 0) ")
+            "and pzwh not like '%食%' ")
     public List<YZYGOODS> getyzygoods();
 
     @Insert("replace INTO hykx_rd.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
