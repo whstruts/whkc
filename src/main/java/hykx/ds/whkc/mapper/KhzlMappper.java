@@ -16,11 +16,11 @@ public interface KhzlMappper {
             "and pzwh not like '%食%' ")
     public List<YZYGOODS> getyzygoods();
 
-    @Insert("replace INTO hykx_rd.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
+    @Insert("replace INTO hykx_hl.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
             " VALUES(#{djbh},#{rq},#{ontime},#{customerId},#{status},#{djje},#{xgdjbh},#{beizhu},#{is_zx})")
     void insertysbDDHZ(ysbddhz ddhz);
 
-    @Insert("replace INTO hykx_rd.ysb_ddmx(djbh,dj_sn,drugCode,shl,dj,je,batchNum,validity,status,is_zx ) "+
+    @Insert("replace INTO hykx_hl.ysb_ddmx(djbh,dj_sn,drugCode,shl,dj,je,batchNum,validity,status,is_zx ) "+
             " VALUES(#{djbh},#{dj_sn},#{drugcode},#{shl},#{dj},#{je},#{batchnum},#{validity},#{status},#{is_zx})")
     void insertysbDDMX(ysbddmx ddmx);
 
