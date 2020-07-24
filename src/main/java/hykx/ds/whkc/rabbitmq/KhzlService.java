@@ -21,4 +21,5 @@ public class KhzlService {
 	public void ItoYSBDDMXs(ysbddmx ddmx){
 		khzlMapper.insertysbDDMX(ddmx);
 	}
+	public void Itogysgoods(gysgoods gysgoods){khzlMapper.insertgysgoods(gysgoods);}
 }
