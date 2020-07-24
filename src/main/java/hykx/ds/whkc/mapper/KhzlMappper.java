@@ -24,6 +24,13 @@ public interface KhzlMappper {
             " VALUES(#{djbh},#{dj_sn},#{drugcode},#{shl},#{dj},#{je},#{batchnum},#{validity},#{status},#{is_zx})")
     void insertysbDDMX(ysbddmx ddmx);
 
+    @Insert("replace INTO hykx_rd.gysgoods(gysbh,drugCode,stock,sptm,spmch,zjm,dw,shpchd,shpgg,pizhwh,jixing,youxq,shangplx,leibie,jlgg,bzgg,cunchtj,gmpzsyxq, " +
+            "gmpzsh,gsp_pzwhyxq,zzhcpj,ssxkcy,ysbgwj,jingd ) "+
+            " VALUES(#{gysbh},#{drugCode},#{stock},#{sptm},#{spmch},#{zjm},#{dw},#{shpchd},#{shpgg},#{pizhwh},#{jixing},#{youxq},#{shangplx},#{leibie}," +
+            "#{jlgg},#{bzgg},#{cunchtj},#{gmpzsyxq}," +
+            "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd}")
+    void insertgysgoods(gysgoods gysgoods);
+
 }
 
 
