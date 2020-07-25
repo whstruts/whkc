@@ -28,7 +28,7 @@ public interface KhzlMappper {
             "gmpzsh,gsp_pzwhyxq,zzhcpj,ssxkcy,ysbgwj,jingd ) "+
             " VALUES(#{gysbh},#{drugCode},#{stock},#{sptm},#{spmch},#{zjm},#{dw},#{shpchd},#{shpgg},#{pizhwh},#{jixing},#{youxq},#{shangplx},#{leibie}," +
             "#{jlgg},#{bzgg},#{cunchtj},#{gmpzsyxq}," +
-            "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd}")
+            "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd} )")
     void insertgysgoods(gysgoods gysgoods);
 
 }
