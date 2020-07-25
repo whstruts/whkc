@@ -3,10 +3,6 @@ package hykx.ds.whkc.bean;
 public class gysgoods {
 
 
-    public void setGysbh(String gysbh) {
-        this.gysbh = gysbh;
-    }
-
     public String getDrugCode() {
         return drugCode;
     }
@@ -191,6 +187,14 @@ public class gysgoods {
         this.jingd = jingd;
     }
 
+    public String getGysbh() {
+        return gysbh;
+    }
+
+    public void setGysbh(String gysbh) {
+        this.gysbh = gysbh;
+    }
+
     private String gysbh;
     private String drugCode;
     private String stock;
@@ -215,4 +219,41 @@ public class gysgoods {
     private String ssxkcy;
     private String ysbgwj;
     private String jingd;
+
+    public String getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(String taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public String getBatchNum() {
+        return batchNum;
+    }
+
+    public void setBatchNum(String batchNum) {
+        this.batchNum = batchNum;
+    }
+
+    public String getProdDate() {
+        return prodDate;
+    }
+
+    public void setProdDate(String prodDate) {
+        this.prodDate = prodDate;
+    }
+
+    public String getValidity() {
+        return validity;
+    }
+
+    public void setValidity(String validity) {
+        this.validity = validity;
+    }
+
+    private String taxRate;
+    private String batchNum;
+    private String prodDate;
+    private String validity;
 }
