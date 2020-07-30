@@ -256,4 +256,14 @@ public class gysgoods {
     private String batchNum;
     private String prodDate;
     private String validity;
+
+    public String getK_bbgwj() {
+        return k_bbgwj;
+    }
+
+    public void setK_bbgwj(String k_bbgwj) {
+        this.k_bbgwj = k_bbgwj;
+    }
+
+    private String k_bbgwj;
 }
