@@ -24,6 +24,7 @@ public class TopicReceivergysgoods {
         s_json = message.substring(i_pos);
         gysgoods = (gysgoods) JSONChange.jsonToObj(gysgoods,s_json);
         khzlService.Itogysgoods(gysgoods);
+        khzlService.gysgoodsToyzygoods();
         System.out.println("接收者 TopicReceiverGYS,"+s_json);
     }
 }
