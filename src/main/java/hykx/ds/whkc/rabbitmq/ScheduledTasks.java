@@ -74,4 +74,10 @@ public class ScheduledTasks {
         }
     }
 
+    @Scheduled(fixedDelay = 60*10*1000) //10分钟
+    public void CurrentTimeGToY()throws Exception{
+        khzlService.gysgoodsToyzygoods();//20200801 whstruts 准实时同步
+        System.out.println("准实时同步GToY");
+    }
+
 }
