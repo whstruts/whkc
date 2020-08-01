@@ -31,17 +31,7 @@ public interface KhzlMappper {
             "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd},#{taxRate},#{batchNum},#{prodDate},#{validity},#{k_bbgwj} )")
     void insertgysgoods(gysgoods gysgoods);
 
-    @Insert("replace INTO hykx_rd.yzy_goods (goods_sn,goods_name,goods_number,market_price,dj,shop_price,is_on_sale,YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ,YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s) " +
-            "select drugCode as goods_sn,spmch as goods_name,stock as goods_number,0 as market_price, " +
-            "truncate(k_bbgwj*(select markUp from hykx_rd.lmsys where customNo = 'lm-bb'),2) as dj, " +
-            "truncate(k_bbgwj*(select markUp from hykx_rd.lmsys where customNo = 'lm-bb')*(select markUp from hykx_rd.lmsys where customNo = 'bb-ysb'),2) as shop_price,  " +
-            "case jingd  " +
-            "WHEN 'A' THEN (case DAYOFWEEK(NOW()) when 7 then 1 when 1 then 1 else 0 end)  " +
-            "WHEN 'B' THEN (case when HOUR(NOW()) > 7  and HOUR(NOW()) <18 then 0 else 1 end) " +
-            "ELSE 1 END as is_on_sale,zjm as YPDM,shpchd as CDMC,'' as CDDM,shpgg as GG, " +
-            "sptm as TXM,dw as DW,jixing as JX,pizhwh as PZWH,jlgg as BZ,bzgg as ZBZ,validity as YXQ,batchNum as PH, " +
-            "1 as ISRETAIL,1 as PCH ,prodDate as SCRQ,drugCode as goods_id_s " +
-            " from hykx_rd.gysgoods where jingd <> '' ")
+    @Select("call hykx_rd.gystoyzy()")
     void gysgoodsToyzygoods();
 
 }
