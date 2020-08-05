@@ -6,14 +6,16 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface KhzlMappper {
-    @Select("select  goods_sn,substring_index(substring_index(goods_name,'(',1),'（',1)  as goods_name,goods_number,market_price,shop_price,is_on_sale, " +
-            "            YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ, " +
-            "            YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s " +
-            "            from hykx_rd.yzy_goods  " +
-            "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1 " +
-            "and ((ISRETAIL = 0 and goods_number+1 > bz*2) or (ISRETAIL = 1 and goods_number+1 > bz/2) ) " +
-            "and goods_sn like 'YSBBB%' and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0 " +
-            "and pzwh not like '%食%' and jx not like '%消毒%'")
+    @Select("select  goods_sn,substring_index(substring_index(goods_name,'(',1),'（',1)  as goods_name,goods_number,market_price, " +
+            "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'hl'),2) as shop_price_hl, " +
+            "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'yex'),2) as shop_price_yex, " +
+            "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'wky'),2) as shop_price_wky, " +
+            "shop_price,is_on_sale, YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ,YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s " +
+            "from hykx_rd.yzy_goods " +
+            "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1  " +
+            "and ((ISRETAIL = 0 and goods_number+1 > bz*2) or (ISRETAIL = 1 and goods_number+1 > bz/2) )  " +
+            "and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0  " +
+            "and  locate('YSBBB', goods_sn) and pzwh not like '%食%' and jx not like '%消毒%'")
     public List<YZYGOODS> getyzygoods();
 
     @Insert("replace INTO hykx_hl.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
