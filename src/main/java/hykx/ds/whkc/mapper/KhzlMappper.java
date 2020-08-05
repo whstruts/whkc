@@ -13,7 +13,8 @@ public interface KhzlMappper {
             "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1 " +
             "and ((ISRETAIL = 0 and goods_number+1 > bz*2) or (ISRETAIL = 1 and goods_number+1 > bz/2) ) " +
             "and goods_sn like 'YSBBB%' and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0 " +
-            "or (goods_sn like 'YSBYMD%'and is_on_sale = 1 and bz > 0) ")
+            "or (goods_sn like 'YSBYMD%'and is_on_sale = 1 and bz > 0) " +
+            "or (goods_sn like 'XH%'and is_on_sale = 1 and bz > 0)")
     public List<YZYGOODS> getyzygoods();
 
     @Insert("replace INTO hykx_rd.ysb_ddhz(djbh,rq,ontime,customerId,status,je,xgdjbh,beizhu,is_zx) " +
