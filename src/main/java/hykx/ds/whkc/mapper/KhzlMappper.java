@@ -10,6 +10,7 @@ public interface KhzlMappper {
             "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'hl'),2) as shop_price_hl, " +
             "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'yex'),2) as shop_price_yex, " +
             "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'wky'),2) as shop_price_wky, " +
+            "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'st'),2) as shop_price_st, " +
             "shop_price,is_on_sale, YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ,YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s " +
             "from hykx_rd.yzy_goods " +
             "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1  " +
