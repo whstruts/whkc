@@ -43,4 +43,6 @@ public class KhzlService {
 	public void DoYSBWriteBack(){
 		khzlMapper.DoYSBWriteBack();
 	}
+
+	public void Itogysgoods(gysgoods gysgoods){khzlMapper.insertgysgoods(gysgoods);}
 }
