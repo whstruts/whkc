@@ -94,6 +94,13 @@ public interface KhzlMappper {
 
     @Select("call HY_INF_KC_YYY_YSB()")
     public void DoYSBWriteBack();
+
+    @Insert("replace INTO hykx.gysgoods(gysbh,drugCode,stock,sptm,spmch,zjm,dw,shpchd,shpgg,pizhwh,jixing,youxq,shangplx,leibie,jlgg,bzgg,cunchtj,gmpzsyxq, " +
+            "gmpzsh,gsp_pzwhyxq,zzhcpj,ssxkcy,ysbgwj,jingd,taxRate,batchNum,prodDate,validity,k_bbgwj ) "+
+            " VALUES(#{gysbh},#{drugCode},#{stock},#{sptm},#{spmch},#{zjm},#{dw},#{shpchd},#{shpgg},#{pizhwh},#{jixing},#{youxq},#{shangplx},#{leibie}," +
+            "#{jlgg},#{bzgg},#{cunchtj},#{gmpzsyxq}," +
+            "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd},#{taxRate},#{batchNum},#{prodDate},#{validity},#{k_bbgwj} )")
+    void insertgysgoods(gysgoods gysgoods);
 }
 
 
