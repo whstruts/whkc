@@ -14,10 +14,17 @@ public class RabbitTopicConfig {
 
     final static String thirdCommodity = "topic.thirdCommodity"; //20211011
 
+    final static String thirdCustomer = "topic.thirdCustomer"; //20211014
+
 
     @Bean
     public Queue queueThirdCommodity() {
         return new Queue(RabbitTopicConfig.thirdCommodity);
+    }
+
+    @Bean
+    public Queue queueThirdCustomer() {
+        return new Queue(RabbitTopicConfig.thirdCustomer);
     }
 
 
@@ -34,6 +41,11 @@ public class RabbitTopicConfig {
     @Bean
     Binding bindingExchangeThirdCommodity(Queue queueThirdCommodity, TopicExchange topicExchange) {
         return BindingBuilder.bind(queueThirdCommodity).to(topicExchange).with("topic.thirdCommodity");
+    }
+
+    @Bean
+    Binding bindingExchangeThirdCustomer(Queue queueThirdCustomer, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queueThirdCustomer).to(topicExchange).with("topic.thirdCustomer");
     }
 
 
