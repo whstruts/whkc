@@ -34,6 +34,11 @@ public interface KhzlMappper {
             "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd},#{taxRate},#{batchNum},#{prodDate},#{validity},#{k_bbgwj} )")
     void insertgysgoods(gysgoods gysgoods);
 
+    @Insert("replace INTO hykx_rd.stgoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack) "+
+            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack})")
+    void insertSTGoods(STGoods stGoods);
+
+
     @Select("call hykx_rd.gystoyzy()")
     void gysgoodsToyzygoods();
 
