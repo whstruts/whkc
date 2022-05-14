@@ -24,4 +24,5 @@ public class KhzlService {
 	public void Itogysgoods(gysgoods gysgoods){khzlMapper.insertgysgoods(gysgoods);}
 	public void gysgoodsToyzygoods(){khzlMapper.gysgoodsToyzygoods();}
 	public void ItoSTGoods(STGoods stGoods){khzlMapper.insertSTGoods(stGoods);}
+	public void ItoMCHK(mchk m){khzlMapper.insertMCHK(m);}
 }

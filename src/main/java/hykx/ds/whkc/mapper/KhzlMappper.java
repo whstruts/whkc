@@ -39,6 +39,11 @@ public interface KhzlMappper {
     void insertSTGoods(STGoods stGoods);
 
 
+    @Insert("replace INTO hykx_rd.mchk(dwbh,danwbh,dwmch,zjm,kehufl,isjh,isxs,dzhdh,yhzhh,lxr,ghxde,xsxde,otd,xdqxg,xdqxx,koul,canskl,yshye,yfye,yingshsx,yshjzh,yfjzh,beactive,yishj,xvkz,shfyyzz,yingyzz,jingyfw,oldyfye,oldyshye,frdb,zhgzsh,zhj_bl,shn_xshe,pzhshl,is_jg,shn_hgl,khyh,idcard,xvkzname,fzhjg,fzhrq,yyzzdjjg,reg_capital,shwdjh,jyfsh,gonghnl,yusye,yufye,flye,chnjsts,oldflye,oldyufye,oldyusye,yufjzh,yusjzh,fljzh,kehulbbh,shenhe,gsp_gspyxq,gsp_gmpyxq,gsp_yyzzyxq,gsp_xkzyxq,gsp_wtsyxq,gsp_zbxyyxq,gsp_dmzyxq,khhm,gspzs,gmpzs,gsp_jgdmnjyxq,gsp_thr,gsp_thrsfz,gsp_zlfzr,gsp_cgwtr,gsp_cgwtrsfz,gsp_cgwtrdh,gsp_cgwtsyxq,zhilbztx,xydcb,email,xy_gxysfz,xy_frwts,xy_zzjgdmz,xy_swdjz) "+
+            " VALUES(#{dwbh},#{danwbh},#{dwmch},#{zjm},#{kehufl},#{isjh},#{isxs},#{dzhdh},#{yhzhh},#{lxr},#{ghxde},#{xsxde},#{otd},#{xdqxg},#{xdqxx},#{koul},#{canskl},#{yshye},#{yfye},#{yingshsx},#{yshjzh},#{yfjzh},#{beactive},#{yishj},#{xvkz},#{shfyyzz},#{yingyzz},#{jingyfw},#{oldyfye},#{oldyshye},#{frdb},#{zhgzsh},#{zhj_bl},#{shn_xshe},#{pzhshl},#{is_jg},#{shn_hgl},#{khyh},#{idcard},#{xvkzname},#{fzhjg},#{fzhrq},#{yyzzdjjg},#{reg_capital},#{shwdjh},#{jyfsh},#{gonghnl},#{yusye},#{yufye},#{flye},#{chnjsts},#{oldflye},#{oldyufye},#{oldyusye},#{yufjzh},#{yusjzh},#{fljzh},#{kehulbbh},#{shenhe},#{gsp_gspyxq},#{gsp_gmpyxq},#{gsp_yyzzyxq},#{gsp_xkzyxq},#{gsp_wtsyxq},#{gsp_zbxyyxq},#{gsp_dmzyxq},#{khhm},#{gspzs},#{gmpzs},#{gsp_jgdmnjyxq},#{gsp_thr},#{gsp_thrsfz},#{gsp_zlfzr},#{gsp_cgwtr},#{gsp_cgwtrsfz},#{gsp_cgwtrdh},#{gsp_cgwtsyxq},#{zhilbztx},#{xydcb},#{email},#{xy_gxysfz},#{xy_frwts},#{xy_zzjgdmz},#{xy_swdjz})")
+    void insertMCHK(mchk m);
+
+
     @Select("call hykx_rd.gystoyzy()")
     void gysgoodsToyzygoods();
 

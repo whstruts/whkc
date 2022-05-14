@@ -18,6 +18,8 @@ public class RabbitTopicConfig {
 
     final static String STGOODS = "topic.STGoods"; //20200724 whstruts 供应商 商品库存
 
+    final static String MCHK = "topic.mchk"; //20220513
+
     @Bean
     public Queue queueYZYGOODS() {
         return new Queue(RabbitTopicConfig.YZYGOODS);
@@ -32,6 +34,13 @@ public class RabbitTopicConfig {
     public Queue queueSTGOODS() {
         return new Queue(RabbitTopicConfig.STGOODS);
     }
+
+    @Bean
+    public Queue queueMCHK() {
+        return new Queue(RabbitTopicConfig.MCHK);
+    }
+
+
 
 
     /**
@@ -57,6 +66,11 @@ public class RabbitTopicConfig {
     @Bean
     Binding bindingExchangeSTGOODS(Queue queueSTGOODS, TopicExchange topicExchange) {
         return BindingBuilder.bind(queueSTGOODS).to(topicExchange).with("topic.STGoods");
+    }
+
+    @Bean
+    Binding bindingExchangeMCHK(Queue queueMCHK, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queueMCHK).to(topicExchange).with("topic.mchk");
     }
 
 
