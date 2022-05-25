@@ -34,8 +34,8 @@ public interface KhzlMappper {
             "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd},#{taxRate},#{batchNum},#{prodDate},#{validity},#{k_bbgwj} )")
     void insertgysgoods(gysgoods gysgoods);
 
-    @Insert("replace INTO hykx_rd.stgoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack) "+
-            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack})")
+    @Insert("replace INTO hykx_rd.stgoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack,zjm,jixing,isdesc) "+
+            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack},#{zjm},#{jixing},#{isdesc})")
     void insertSTGoods(STGoods stGoods);
 
 
