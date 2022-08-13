@@ -26,4 +26,5 @@ public class KhzlService {
 	public void ItoSTGoods(STGoods stGoods){khzlMapper.insertSTGoods(stGoods);}
 	public void ItoMCHK(mchk m){khzlMapper.insertMCHK(m);}
 	public void ItoST2YNGoods(STGoods stGoods){khzlMapper.insertST2YNGoods(stGoods);}
+	public void updateSTGoodsDown(){khzlMapper.updateSTGoodsDown();}
 }

@@ -3,6 +3,8 @@ package hykx.ds.whkc.mapper;
 import hykx.ds.whkc.bean.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import java.util.List;
 
 public interface KhzlMappper {
@@ -34,12 +36,12 @@ public interface KhzlMappper {
             "#{gmpzsh},#{gsp_pzwhyxq},#{zzhcpj},#{ssxkcy},#{ysbgwj},#{jingd},#{taxRate},#{batchNum},#{prodDate},#{validity},#{k_bbgwj} )")
     void insertgysgoods(gysgoods gysgoods);
 
-    @Insert("replace INTO hykx_rd.stgoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack,zjm,jixing,isdesc) "+
-            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack},#{zjm},#{jixing},#{isdesc})")
+    @Insert("replace INTO hykx_rd.stgoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack,zjm,jixing,isdesc,isonsale) "+
+            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack},#{zjm},#{jixing},#{isdesc},1)")
     void insertSTGoods(STGoods stGoods);
 
-    @Insert("replace INTO hykx_rd.st2yngoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack,zjm,jixing,isdesc) "+
-            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack},#{zjm},#{jixing},#{isdesc})")
+    @Insert("replace INTO hykx_rd.st2yngoods(drugCode,stock,price,chainPrice,batchNum,prodDate,validity,drugName,pack,factory,unit,barcode,approval,busiType,inCode,step,taxRate,midPack,wholePack,zjm,jixing,isdesc,isonsale) "+
+            " VALUES(#{drugCode},#{stock},#{price},#{chainPrice},#{batchNum},#{prodDate},#{validity},#{drugName},#{pack},#{factory},#{unit},#{barcode},#{approval},#{busiType},#{inCode},#{step},#{taxRate},#{midPack},#{wholePack},#{zjm},#{jixing},#{isdesc},1)")
     void insertST2YNGoods(STGoods stGoods);
 
 
@@ -50,6 +52,9 @@ public interface KhzlMappper {
 
     @Select("call hykx_rd.gystoyzy()")
     void gysgoodsToyzygoods();
+
+    @Update("update st2yngoods set isonsale = 0")
+    void updateSTGoodsDown();
 
 }
 

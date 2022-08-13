@@ -80,4 +80,9 @@ public class ScheduledTasks {
         System.out.println("准实时同步GToY");
     }
 
+    @Scheduled(cron = "0 0 */2 * * ?")
+    public void DownSTGoods() throws Exception{
+       khzlService.updateSTGoodsDown();
+    }
+
 }
