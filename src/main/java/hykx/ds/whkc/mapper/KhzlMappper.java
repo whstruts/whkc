@@ -14,10 +14,11 @@ public interface KhzlMappper {
             "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'wky'),2) as shop_price_wky, " +
             "truncate(zk*(select markUp from hykx_rd.lmsys where customNo = 'st'),2) as shop_price_st, " +
             "shop_price,is_on_sale, YPDM,CDMC,CDDM,GG,TXM,DW,JX,PZWH,BZ,ZBZ,YXQ,PH,ISRETAIL,PCH,SCRQ,goods_id_s " +
-            "from hykx_rd.yzy_goods " +
+            "from hykx_rd.yzy_goods g " +
             "where RPAD(YXQ,10,'-15') >sysdate()  and is_on_sale = 1  " +
             "and ((ISRETAIL = 0 and goods_number+1 > bz*2) or (ISRETAIL = 1 and goods_number+1 > bz/2) )  " +
             "and CONVERT(bz,DECIMAL) > CONVERT(zbz,DECIMAL) and shop_price > 0  " +
+            "and NOT EXISTS (select * from hykx_rd.lmsys_pzwh b where g.PZWH = b.pzwh) " +
             "and  locate('YSBBB', goods_sn) and pzwh not like '%食%' and jx not like '%消毒%'")
     public List<YZYGOODS> getyzygoods();
 
