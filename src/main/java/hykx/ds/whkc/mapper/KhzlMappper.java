@@ -54,7 +54,7 @@ public interface KhzlMappper {
     @Select("call hykx_rd.gystoyzy()")
     void gysgoodsToyzygoods();
 
-    @Update("update st2yngoods set isonsale = 0")
+    @Update("update hykx_rd.st2yngoods set isonsale = 0")
     void updateSTGoodsDown();
 
 }
